@@ -254,7 +254,7 @@
     <child
       link="wheel_l" />
     <axis
-      xyz="0 0 1" />
+      xyz="0 0 -1" />
     <limit
       lower="0"
       upper="0"
@@ -479,7 +479,7 @@
       xyz="0 0 1" />
     <limit
       lower="-0.219374105739371"
-      upper="1.35142222105552"
+      upper="0.21"
       effort="0"
       velocity="0" />
   </joint>
@@ -594,4 +594,22 @@
     <axis
       xyz="0 0 0" />
   </joint>
+  <gazebo>
+  <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+    <alwaysOn>true</alwaysOn>
+    <legacyMode>false</legacyMode>
+    <updateRate>40</updateRate>
+    <leftJoint>wheel_l_joint</leftJoint>
+    <rightJoint>wheel_r_joint</rightJoint>
+    <wheelSeparation>0.38</wheelSeparation>
+    <wheelDiameter>0.6</wheelDiameter>
+    <torque>100</torque>
+    <commandTopic>cmd_vel</commandTopic>
+    <odometryTopic>odom</odometryTopic>
+    <odometryFrame>odom</odometryFrame>
+    <robotBaseFrame>base_footprint</robotBaseFrame>
+    <wheelAcceleration>1.0</wheelAcceleration>
+    <publishWheelJointState>true</publishWheelJointState>
+  </plugin>
+</gazebo>
 </robot>
