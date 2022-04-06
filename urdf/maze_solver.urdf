@@ -8,17 +8,17 @@
     name="base_link">
     <inertial>
       <origin
-        xyz="0.272005087070109 0.131245622631529 0.306632232073919"
+        xyz="5.31102203782299E-17 0.0429739467849225 1.00918561979163E-16"
         rpy="0 0 0" />
       <mass
         value="1.804" />
       <inertia
-        ixx="0.0170711114421655"
-        ixy="-1.11503257682928E-17"
-        ixz="8.02365194176436E-18"
-        iyy="0.0289395666666666"
-        iyz="-3.95602046011923E-18"
-        izz="0.0357214114421655" />
+        ixx="0.0170711114421656"
+        ixy="1.0598798124453E-17"
+        ixz="1.169964258395E-17"
+        iyy="0.0289395666666667"
+        iyz="-4.47235019331738E-18"
+        izz="0.0357214114421656" />
     </inertial>
     <visual>
       <origin
@@ -48,17 +48,17 @@
     name="sensor_r">
     <inertial>
       <origin
-        xyz="0.00167825063166782 -0.0025 0.00228459119938573"
+        xyz="0.00167825063166785 -0.0025 0.00228459119938573"
         rpy="0 0 0" />
       <mass
-        value="0.000399999999999999" />
+        value="0.000400000000000001" />
       <inertia
-        ixx="2.96666666666666E-09"
-        ixy="-2.46145127494112E-25"
-        ixz="5.33676241186628E-24"
-        iyy="5.46666666666666E-09"
-        iyz="1.24077091882953E-25"
-        izz="4.16666666666665E-09" />
+        ixx="2.96666666666668E-09"
+        ixy="-1.88193956686158E-25"
+        ixz="-1.53800619907838E-25"
+        iyy="5.46666666666668E-09"
+        iyz="-6.89317177127523E-26"
+        izz="4.16666666666667E-09" />
     </inertial>
     <visual>
       <origin
@@ -88,8 +88,8 @@
     name="sensor_r_joint"
     type="fixed">
     <origin
-      xyz="0.077005 -0.30495 0.35156"
-      rpy="3.1416 0 -1.5708" />
+      xyz="-0.195 0.00167825063166793 0.263284591199386"
+      rpy="3.14159265358979 0 -1.5707963267949" />
     <parent
       link="base_link" />
     <child
@@ -101,17 +101,17 @@
     name="sensor_f">
     <inertial>
       <origin
-        xyz="0.00167825063166782 0.0025 -0.00228459119938568"
+        xyz="0.00167825063166785 0.0025 -0.00228459119938573"
         rpy="0 0 0" />
       <mass
-        value="0.000399999999999999" />
+        value="0.0004" />
       <inertia
-        ixx="2.96666666666666E-09"
-        ixy="9.44953485260854E-26"
-        ixz="-2.18973898733301E-26"
-        iyy="5.46666666666662E-09"
-        iyz="-7.74710473173196E-42"
-        izz="4.16666666666662E-09" />
+        ixx="2.96666666666667E-09"
+        ixy="-8.90222804304396E-27"
+        ixz="-4.46391304228543E-25"
+        iyy="5.46666666666667E-09"
+        iyz="-2.61781266765201E-43"
+        izz="4.16666666666667E-09" />
     </inertial>
     <visual>
       <origin
@@ -141,7 +141,7 @@
     name="sensor_f_joint"
     type="fixed">
     <origin
-      xyz="0.270394416349372 -0.331632232073919 0.344987084647221"
+      xyz="-0.00161067072073706 -0.0249999999999999 0.256715408800614"
       rpy="3.14159265358979 0 0" />
     <parent
       link="base_link" />
@@ -151,20 +151,20 @@
       xyz="0 0 0" />
   </joint>
   <link
-    name="sensor_b">
+    name="sensor_l">
     <inertial>
       <origin
-        xyz="0.00167825063166782 0.0025 -0.00228459119938573"
+        xyz="0.00167825063166785 -0.0025 0.00228459119938573"
         rpy="0 0 0" />
       <mass
-        value="0.000399999999999999" />
+        value="0.000400000000000001" />
       <inertia
-        ixx="2.96666666666666E-09"
-        ixy="9.44953485260832E-26"
-        ixz="1.94616407543925E-26"
-        iyy="5.46666666666662E-09"
-        iyz="-7.74710473173196E-42"
-        izz="4.16666666666662E-09" />
+        ixx="2.96666666666668E-09"
+        ixy="-4.50365103748664E-25"
+        ixz="6.06937399655524E-26"
+        iyy="5.46666666666668E-09"
+        iyz="-1.21220896784814E-25"
+        izz="4.16666666666668E-09" />
     </inertial>
     <visual>
       <origin
@@ -172,7 +172,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://maze_solver/meshes/sensor_b.STL" />
+          filename="package://maze_solver/meshes/sensor_l.STL" />
       </geometry>
       <material
         name="">
@@ -186,95 +186,37 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://maze_solver/meshes/sensor_b.STL" />
+          filename="package://maze_solver/meshes/sensor_l.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="sensor_b_joint"
+    name="sensor_l_joint"
     type="fixed">
     <origin
-      xyz="0.270326836438441 -0.281632232073919 0.351556267045992"
-      rpy="0 0 0" />
+      xyz="0.19 0.00167825063166787 0.261284591199386"
+      rpy="3.14159265358979 0 -1.5707963267949" />
     <parent
       link="base_link" />
     <child
-      link="sensor_b" />
+      link="sensor_l" />
     <axis
       xyz="0 0 0" />
   </joint>
   <link
-    name="wheel_r">
+    name="wheel_l">
     <inertial>
       <origin
-        xyz="-0.0267187514591759 -0.0326825016397019 0.00499999999999995"
+        xyz="2.60208521396521E-18 -1.73472347597681E-18 0.00500000000000003"
         rpy="0 0 0" />
       <mass
         value="0.0282743338823082" />
       <inertia
         ixx="6.59734457253857E-06"
         ixy="0"
-        ixz="-9.93244647772154E-23"
+        ixz="-2.11023447556403E-38"
         iyy="6.59734457253857E-06"
-        iyz="-9.97194947654995E-24"
-        izz="1.27234502470387E-05" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://maze_solver/meshes/wheel_r.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://maze_solver/meshes/wheel_r.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="wheel_r_joint"
-    type="revolute">
-    <origin
-      xyz="0.46201 -0.25734 0.098272"
-      rpy="1.5708 0.88546 1.5708" />
-    <parent
-      link="base_link" />
-    <child
-      link="wheel_r" />
-    <axis
-      xyz="0.63293 0.77421 0" />
-    <limit
-      lower="0"
-      upper="0"
-      effort="0"
-      velocity="0" />
-  </joint>
-  <link
-    name="wheel_l">
-    <inertial>
-      <origin
-        xyz="0.03 0 -0.00500000000000002"
-        rpy="0 0 0" />
-      <mass
-        value="0.0282743338823081" />
-      <inertia
-        ixx="6.59734457253856E-06"
-        ixy="7.72340647507603E-38"
-        ixz="-1.82745769488873E-37"
-        iyy="6.59734457253856E-06"
-        iyz="4.59177480789959E-38"
+        iyz="-4.98934721673592E-39"
         izz="1.27234502470387E-05" />
     </inertial>
     <visual>
@@ -303,16 +245,16 @@
   </link>
   <joint
     name="wheel_l_joint"
-    type="revolute">
+    type="continuous">
     <origin
-      xyz="0.082005 -0.26955 0.098272"
-      rpy="-1.5708 0 -1.5708" />
+      xyz="0.19 0 0.01"
+      rpy="1.5707963267949 0.885460579278242 1.5707963267949" />
     <parent
       link="base_link" />
     <child
       link="wheel_l" />
     <axis
-      xyz="1 0 0" />
+      xyz="0 0 1" />
     <limit
       lower="0"
       upper="0"
@@ -320,20 +262,20 @@
       velocity="0" />
   </joint>
   <link
-    name="caster_f">
+    name="wheel_r">
     <inertial>
       <origin
-        xyz="0 0.0129224542982562 -2.77555756156289E-17"
+        xyz="-5.20417042793042E-18 -2.73218947466347E-17 0.005"
         rpy="0 0 0" />
       <mass
-        value="0.00506672375389253" />
+        value="0.0282743338823082" />
       <inertia
-        ixx="2.64465523113008E-07"
-        ixy="-1.29257916186191E-25"
-        ixz="-7.83325135724381E-23"
-        iyy="4.95058764494177E-07"
-        iyz="-4.95344497001472E-25"
-        izz="2.64465523113008E-07" />
+        ixx="6.59734457253857E-06"
+        ixy="4.2351647362715E-22"
+        ixz="-2.01218426660431E-38"
+        iyy="6.59734457253857E-06"
+        iyz="-1.22945901590415E-38"
+        izz="1.27234502470387E-05" />
     </inertial>
     <visual>
       <origin
@@ -341,7 +283,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://maze_solver/meshes/caster_f.STL" />
+          filename="package://maze_solver/meshes/wheel_r.STL" />
       </geometry>
       <material
         name="">
@@ -355,37 +297,42 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://maze_solver/meshes/caster_f.STL" />
+          filename="package://maze_solver/meshes/wheel_r.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="caster_f_joint"
-    type="fixed">
+    name="wheel_r_joint"
+    type="continuous">
     <origin
-      xyz="0.27201 -0.22038 0.068372"
-      rpy="1.5708 0 0" />
+      xyz="-0.19 0 0.01"
+      rpy="1.5707963267949 1.30809386854526 -1.5707963267949" />
     <parent
       link="base_link" />
     <child
-      link="caster_f" />
+      link="wheel_r" />
     <axis
-      xyz="0 1 0" />
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
   </joint>
   <link
     name="caster_b">
     <inertial>
       <origin
-        xyz="0 0.0129224542982562 -5.55111512312578E-17"
+        xyz="5.45392589743884E-17 -0.0069775457017438 -1.38777878078145E-17"
         rpy="0 0 0" />
       <mass
         value="0.00506672375389253" />
       <inertia
         ixx="2.64465523113008E-07"
-        ixy="-1.28948443239958E-25"
-        ixz="-7.81540276020561E-23"
+        ixy="-2.79682351976512E-25"
+        ixz="-8.00725373235536E-23"
         iyy="4.95058764494176E-07"
-        iyz="-4.94176432737914E-25"
+        iyz="-3.3989005198155E-25"
         izz="2.64465523113008E-07" />
     </inertial>
     <visual>
@@ -414,32 +361,85 @@
   </link>
   <joint
     name="caster_b_joint"
-    type="fixed">
+    type="continuous">
     <origin
-      xyz="0.27201 -0.39288 0.069514"
-      rpy="1.5708 0 0" />
+      xyz="0 0.08625 0"
+      rpy="1.5707963267949 0 0" />
     <parent
       link="base_link" />
     <child
       link="caster_b" />
     <axis
-      xyz="0 0 0" />
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="caster_f">
+    <inertial>
+      <origin
+        xyz="4.16333634234434E-17 -0.0069775457017438 2.77555756156289E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.00506672375389253" />
+      <inertia
+        ixx="2.64465523113008E-07"
+        ixy="-3.17254822005274E-25"
+        ixz="-3.97046694025453E-23"
+        iyy="4.95058764494176E-07"
+        iyz="-2.20140457848662E-24"
+        izz="2.64465523113008E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/caster_f.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/caster_f.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="caster_f_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.08625 0"
+      rpy="1.5707963267949 0 0.599335912665456" />
+    <parent
+      link="base_link" />
+    <child
+      link="caster_f" />
+    <axis
+      xyz="0 1 0" />
   </joint>
   <link
     name="arm_base">
     <inertial>
       <origin
-        xyz="-0.19 0.00499999999999995 0.0250000000000001"
+        xyz="-0.19 0.00499999999999984 0.0249999999999999"
         rpy="0 0 0" />
       <mass
-        value="0.0449400000000001" />
+        value="0.0449400000000003" />
       <inertia
         ixx="2.1614E-05"
-        ixy="2.68513961788487E-23"
-        ixz="3.01114505327962E-20"
-        iyy="0.0006609925"
-        iyz="1.12346567889469E-21"
-        izz="0.0006401275" />
+        ixy="-2.4818065354551E-19"
+        ixz="-2.46307560799246E-19"
+        iyy="0.000660992500000002"
+        iyz="-1.71681721517741E-20"
+        izz="0.000640127500000002" />
     </inertial>
     <visual>
       <origin
@@ -469,8 +469,8 @@
     name="arm_base_joint"
     type="revolute">
     <origin
-      xyz="0.46201 -0.28163 0.35327"
-      rpy="1.5708 0 0" />
+      xyz="0.189999999999998 0.0250000000000001 0.265000000000002"
+      rpy="1.5707963267949 0.219374105739364 0" />
     <parent
       link="base_link" />
     <child
@@ -478,8 +478,8 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="0"
-      upper="1.5708"
+      lower="-0.219374105739371"
+      upper="1.35142222105552"
       effort="0"
       velocity="0" />
   </joint>
@@ -487,17 +487,17 @@
     name="arm_top">
     <inertial>
       <origin
-        xyz="0.19 0.005 0.025"
+        xyz="0.189999999999999 0.00499999999999967 0.0250000000000002"
         rpy="0 0 0" />
       <mass
-        value="0.0449400000000001" />
+        value="0.0449399999999996" />
       <inertia
         ixx="2.1614E-05"
-        ixy="2.68513961788488E-23"
-        ixz="3.01114505327962E-20"
-        iyy="0.0006609925"
-        iyz="1.12346567889469E-21"
-        izz="0.0006401275" />
+        ixy="1.33661799076729E-18"
+        ixz="7.28291543396973E-19"
+        iyy="0.000660992499999993"
+        iyz="-3.13769731425328E-20"
+        izz="0.000640127499999993" />
     </inertial>
     <visual>
       <origin
@@ -527,8 +527,8 @@
     name="arm_top_joint"
     type="revolute">
     <origin
-      xyz="-0.38 0.01 0"
-      rpy="0 0 0" />
+      xyz="-0.379999999999998 0.00999999999999857 0"
+      rpy="0 0 0.514515495694071" />
     <parent
       link="arm_base" />
     <child
@@ -536,8 +536,8 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="0"
-      upper="3.1416"
+      lower="-0.514515495694073"
+      upper="2.62707715789572"
       effort="0"
       velocity="0" />
   </joint>
@@ -545,17 +545,17 @@
     name="camera">
     <inertial>
       <origin
-        xyz="0.00388899991882513 0.00999999994263184 0.00267582304678082"
+        xyz="0.0038889997713113 0.00979718551655867 -0.00334293059033772"
         rpy="0 0 0" />
       <mass
-        value="0.0641999999999999" />
+        value="0.0642" />
       <inertia
         ixx="1.5515E-05"
-        ixy="2.52543854038585E-13"
-        ixz="3.01742011752392E-21"
-        iyy="3.26349999999999E-05"
-        iyz="3.40550670321885E-21"
-        izz="2.14E-05" />
+        ixy="1.69259430207196E-20"
+        ixz="-4.53927511842652E-21"
+        iyy="2.91544073556646E-05"
+        iyz="-5.19518365443481E-06"
+        izz="2.48805926443354E-05" />
     </inertial>
     <visual>
       <origin
@@ -585,8 +585,8 @@
     name="camera"
     type="fixed">
     <origin
-      xyz="0.35232 0.01 0.028889"
-      rpy="1.5708 1.5708 1.5708" />
+      xyz="0.352324176953221 0.0100000000000041 0.0288889997713121"
+      rpy="0.590282779909414 1.5707963267949 0" />
     <parent
       link="arm_top" />
     <child
