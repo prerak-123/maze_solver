@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="maze_solver">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.272005087070109 0.131245622631529 0.306632232073919"
+        rpy="0 0 0" />
+      <mass
+        value="1.804" />
+      <inertia
+        ixx="0.0170711114421655"
+        ixy="-1.11503257682928E-17"
+        ixz="8.02365194176436E-18"
+        iyy="0.0289395666666666"
+        iyz="-3.95602046011923E-18"
+        izz="0.0357214114421655" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="sensor_r">
+    <inertial>
+      <origin
+        xyz="0.00167825063166782 -0.0025 0.00228459119938573"
+        rpy="0 0 0" />
+      <mass
+        value="0.000399999999999999" />
+      <inertia
+        ixx="2.96666666666666E-09"
+        ixy="-2.46145127494112E-25"
+        ixz="5.33676241186628E-24"
+        iyy="5.46666666666666E-09"
+        iyz="1.24077091882953E-25"
+        izz="4.16666666666665E-09" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/sensor_r.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/sensor_r.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="sensor_r_joint"
+    type="fixed">
+    <origin
+      xyz="0.077005 -0.30495 0.35156"
+      rpy="3.1416 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="sensor_r" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="sensor_f">
+    <inertial>
+      <origin
+        xyz="0.00167825063166782 0.0025 -0.00228459119938568"
+        rpy="0 0 0" />
+      <mass
+        value="0.000399999999999999" />
+      <inertia
+        ixx="2.96666666666666E-09"
+        ixy="9.44953485260854E-26"
+        ixz="-2.18973898733301E-26"
+        iyy="5.46666666666662E-09"
+        iyz="-7.74710473173196E-42"
+        izz="4.16666666666662E-09" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/sensor_f.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/sensor_f.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="sensor_f_joint"
+    type="fixed">
+    <origin
+      xyz="0.270394416349372 -0.331632232073919 0.344987084647221"
+      rpy="3.14159265358979 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="sensor_f" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="sensor_b">
+    <inertial>
+      <origin
+        xyz="0.00167825063166782 0.0025 -0.00228459119938573"
+        rpy="0 0 0" />
+      <mass
+        value="0.000399999999999999" />
+      <inertia
+        ixx="2.96666666666666E-09"
+        ixy="9.44953485260832E-26"
+        ixz="1.94616407543925E-26"
+        iyy="5.46666666666662E-09"
+        iyz="-7.74710473173196E-42"
+        izz="4.16666666666662E-09" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/sensor_b.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/sensor_b.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="sensor_b_joint"
+    type="fixed">
+    <origin
+      xyz="0.270326836438441 -0.281632232073919 0.351556267045992"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="sensor_b" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="wheel_r">
+    <inertial>
+      <origin
+        xyz="-0.0267187514591759 -0.0326825016397019 0.00499999999999995"
+        rpy="0 0 0" />
+      <mass
+        value="0.0282743338823082" />
+      <inertia
+        ixx="6.59734457253857E-06"
+        ixy="0"
+        ixz="-9.93244647772154E-23"
+        iyy="6.59734457253857E-06"
+        iyz="-9.97194947654995E-24"
+        izz="1.27234502470387E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/wheel_r.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/wheel_r.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_r_joint"
+    type="revolute">
+    <origin
+      xyz="0.46201 -0.25734 0.098272"
+      rpy="1.5708 0.88546 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_r" />
+    <axis
+      xyz="0.63293 0.77421 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wheel_l">
+    <inertial>
+      <origin
+        xyz="0.03 0 -0.00500000000000002"
+        rpy="0 0 0" />
+      <mass
+        value="0.0282743338823081" />
+      <inertia
+        ixx="6.59734457253856E-06"
+        ixy="7.72340647507603E-38"
+        ixz="-1.82745769488873E-37"
+        iyy="6.59734457253856E-06"
+        iyz="4.59177480789959E-38"
+        izz="1.27234502470387E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/wheel_l.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/wheel_l.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_l_joint"
+    type="revolute">
+    <origin
+      xyz="0.082005 -0.26955 0.098272"
+      rpy="-1.5708 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_l" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="caster_f">
+    <inertial>
+      <origin
+        xyz="0 0.0129224542982562 -2.77555756156289E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.00506672375389253" />
+      <inertia
+        ixx="2.64465523113008E-07"
+        ixy="-1.29257916186191E-25"
+        ixz="-7.83325135724381E-23"
+        iyy="4.95058764494177E-07"
+        iyz="-4.95344497001472E-25"
+        izz="2.64465523113008E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/caster_f.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/caster_f.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="caster_f_joint"
+    type="fixed">
+    <origin
+      xyz="0.27201 -0.22038 0.068372"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="caster_f" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="caster_b">
+    <inertial>
+      <origin
+        xyz="0 0.0129224542982562 -5.55111512312578E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.00506672375389253" />
+      <inertia
+        ixx="2.64465523113008E-07"
+        ixy="-1.28948443239958E-25"
+        ixz="-7.81540276020561E-23"
+        iyy="4.95058764494176E-07"
+        iyz="-4.94176432737914E-25"
+        izz="2.64465523113008E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/caster_b.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/caster_b.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="caster_b_joint"
+    type="fixed">
+    <origin
+      xyz="0.27201 -0.39288 0.069514"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="caster_b" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="arm_base">
+    <inertial>
+      <origin
+        xyz="-0.19 0.00499999999999995 0.0250000000000001"
+        rpy="0 0 0" />
+      <mass
+        value="0.0449400000000001" />
+      <inertia
+        ixx="2.1614E-05"
+        ixy="2.68513961788487E-23"
+        ixz="3.01114505327962E-20"
+        iyy="0.0006609925"
+        iyz="1.12346567889469E-21"
+        izz="0.0006401275" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/arm_base.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.32" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/arm_base.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="arm_base_joint"
+    type="revolute">
+    <origin
+      xyz="0.46201 -0.28163 0.35327"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="arm_base" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="1.5708"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="arm_top">
+    <inertial>
+      <origin
+        xyz="0.19 0.005 0.025"
+        rpy="0 0 0" />
+      <mass
+        value="0.0449400000000001" />
+      <inertia
+        ixx="2.1614E-05"
+        ixy="2.68513961788488E-23"
+        ixz="3.01114505327962E-20"
+        iyy="0.0006609925"
+        iyz="1.12346567889469E-21"
+        izz="0.0006401275" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/arm_top.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.32" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/arm_top.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="arm_top_joint"
+    type="revolute">
+    <origin
+      xyz="-0.38 0.01 0"
+      rpy="0 0 0" />
+    <parent
+      link="arm_base" />
+    <child
+      link="arm_top" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="3.1416"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="camera">
+    <inertial>
+      <origin
+        xyz="0.00388899991882513 0.00999999994263184 0.00267582304678082"
+        rpy="0 0 0" />
+      <mass
+        value="0.0641999999999999" />
+      <inertia
+        ixx="1.5515E-05"
+        ixy="2.52543854038585E-13"
+        ixz="3.01742011752392E-21"
+        iyy="3.26349999999999E-05"
+        iyz="3.40550670321885E-21"
+        izz="2.14E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/camera.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.32" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maze_solver/meshes/camera.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="camera"
+    type="fixed">
+    <origin
+      xyz="0.35232 0.01 0.028889"
+      rpy="1.5708 1.5708 1.5708" />
+    <parent
+      link="arm_top" />
+    <child
+      link="camera" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
