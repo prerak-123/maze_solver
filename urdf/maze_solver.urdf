@@ -599,7 +599,7 @@
     <wheelSeparation>0.38</wheelSeparation>
     <wheelDiameter>0.06</wheelDiameter>
     <torque>100</torque>
-    <commandTopic>cmd_vel</commandTopic>
+    <commandTopic>maze_solver/cmd_vel</commandTopic>
     <odometryTopic>odom</odometryTopic>
     <odometryFrame>odom</odometryFrame>
     <robotBaseFrame>base_footprint</robotBaseFrame>

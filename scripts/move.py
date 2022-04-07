@@ -7,8 +7,8 @@ if __name__ == '__main__':
     try:
         rospy.init_node('move_robot', anonymous=True)
         while not rospy.is_shutdown():
-            speed = 0.5
-            velocity_publisher = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
+            speed = 0.1
+            velocity_publisher = rospy.Publisher('maze_solver/cmd_vel', Twist, queue_size=10)
             vel_msg = Twist()
     
             vel_msg.linear.x = speed
