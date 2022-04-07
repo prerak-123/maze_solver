@@ -89,7 +89,7 @@
     type="fixed">
     <origin
       xyz="-0.195 0.00167825063166793 0.263284591199386"
-      rpy="3.14159265358979 0 -1.5707963267949" />
+      rpy="3.14159265358979 0 -3.14" />
     <parent
       link="base_link" />
     <child
@@ -102,7 +102,7 @@
     <inertial>
       <origin
         xyz="0.00167825063166785 0.0025 -0.00228459119938573"
-        rpy="0 0 0" />
+        rpy="0 0 1.57" />
       <mass
         value="0.0004" />
       <inertia
@@ -142,7 +142,7 @@
     type="fixed">
     <origin
       xyz="-0.00161067072073706 -0.0249999999999999 0.256715408800614"
-      rpy="3.14159265358979 0 0" />
+      rpy="3.14159265358979 0 -1.57" />
     <parent
       link="base_link" />
     <child
@@ -195,7 +195,7 @@
     type="fixed">
     <origin
       xyz="0.19 0.00167825063166787 0.261284591199386"
-      rpy="3.14159265358979 0 -1.5707963267949" />
+      rpy="3.14159265358979 0 0" />
     <parent
       link="base_link" />
     <child
@@ -254,7 +254,7 @@
     <child
       link="wheel_l" />
     <axis
-      xyz="0 0 -1" />
+      xyz="0 0 1" />
     <limit
       lower="0"
       upper="0"
@@ -312,7 +312,7 @@
     <child
       link="wheel_r" />
     <axis
-      xyz="0 0 1" />
+      xyz="0 0 -1" />
     <limit
       lower="0"
       upper="0"
@@ -607,7 +607,7 @@
     <publishWheelJointState>true</publishWheelJointState>
   </plugin>
 </gazebo>
-<gazebo>        
+<gazebo reference="sensor_f">        
    			<sensor type="ray" name="sensor_f">
 		      <pose>0 0 0 0 0 0</pose>
 		      <visualize>true</visualize>
@@ -644,7 +644,7 @@
 		      </plugin>
 		   	</sensor>  
    		</gazebo>
- <gazebo>        
+ <gazebo reference="sensor_r">        
    			<sensor type="ray" name="sensor_r">
 		      <pose>0 0 0 0 0 0</pose>
 		      <visualize>true</visualize>
@@ -681,7 +681,7 @@
 		      </plugin>
 		   	</sensor>  
    		</gazebo>
-      <gazebo>        
+      <gazebo reference="sensor_l">        
    			<sensor type="ray" name="sensor_l">
 		      <pose>0 0 0 0 0 0</pose>
 		      <visualize>true</visualize>
