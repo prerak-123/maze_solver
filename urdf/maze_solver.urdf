@@ -354,8 +354,7 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://maze_solver/meshes/caster_b.STL" />
+        <sphere radius="0.02"/>
       </geometry>
     </collision>
   </link>
@@ -369,8 +368,6 @@
       link="base_link" />
     <child
       link="caster_b" />
-    <axis
-      xyz="0 1 0" />
   </joint>
   <link
     name="caster_f">
@@ -407,8 +404,7 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://maze_solver/meshes/caster_f.STL" />
+        <sphere radius="0.02"/>
       </geometry>
     </collision>
   </link>
@@ -422,8 +418,7 @@
       link="base_link" />
     <child
       link="caster_f" />
-    <axis
-      xyz="0 1 0" />
+    
   </joint>
   <link
     name="arm_base">
@@ -602,7 +597,7 @@
     <leftJoint>wheel_l_joint</leftJoint>
     <rightJoint>wheel_r_joint</rightJoint>
     <wheelSeparation>0.38</wheelSeparation>
-    <wheelDiameter>0.6</wheelDiameter>
+    <wheelDiameter>0.06</wheelDiameter>
     <torque>100</torque>
     <commandTopic>cmd_vel</commandTopic>
     <odometryTopic>odom</odometryTopic>
