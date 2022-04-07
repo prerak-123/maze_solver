@@ -1016,10 +1016,9 @@
       <cast_shadows>0</cast_shadows>
       <direction>0 0 -1</direction>
     </light>
-    <!-- <include>
-      <uri>model://my_ground_plane</uri>
-      <pose>10 10 0 0 0 0</pose>
-    </include> -->
+    <include>
+			<uri>model://ground_plane</uri>
+		</include>
     <gravity>0 0 -9.8</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
     <atmosphere type="adiabatic"/>
