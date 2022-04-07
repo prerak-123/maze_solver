@@ -757,4 +757,19 @@
       </plugin>
     </sensor>
   </gazebo>
+  <gazebo reference="wheel_l">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+  <minDepth>0.001</minDepth>
+    <kp>100000000</kp>
+    <kd>1</kd>
+</gazebo>
+
+<gazebo reference="wheel_r">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+  <minDepth>0.001</minDepth>
+    <kp>1000000000</kp>
+    <kd>0.5</kd>
+</gazebo>
 </robot>
