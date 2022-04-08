@@ -629,7 +629,7 @@
 		         </scan>
 		         <range>
 		            <min>0.01</min>
-		            <max>2</max>
+		            <max>10</max>
 		            <resolution>0.02</resolution>
 		         </range>
 		      </ray>
@@ -666,7 +666,7 @@
 		         </scan>
 		         <range>
 		            <min>0.01</min>
-		            <max>2</max>
+		            <max>10</max>
 		            <resolution>0.02</resolution>
 		         </range>
 		      </ray>
@@ -703,7 +703,7 @@
 		         </scan>
 		         <range>
 		            <min>0.01</min>
-		            <max>2</max>
+		            <max>10</max>
 		            <resolution>0.02</resolution>
 		         </range>
 		      </ray>
@@ -764,7 +764,6 @@
     <kp>100000000</kp>
     <kd>1</kd>
 </gazebo>
-
 <gazebo reference="wheel_r">
     <mu1>0.9</mu1>
     <mu2>0.9</mu2>
