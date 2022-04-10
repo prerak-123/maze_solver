@@ -5,6 +5,7 @@ from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Range
 from nav_msgs.msg import Odometry
 from rosgraph_msgs.msg import Clock
+from tf.transformations import euler_from_quaternion
 
 p_detected = False
 password = 'XXXXX'
@@ -18,6 +19,7 @@ pose = {
     "x": 0,
     "y": 0,
     "z": 0,
+    "angle": 0,
     "time_sec": 0
 }
 
@@ -34,6 +36,14 @@ def odom(data):
     pose["x"] = data.pose.pose.position.x
     pose["y"] = data.pose.pose.position.y
     pose["z"] = data.pose.pose.position.z
+    
+    orientation = [data.pose.pose.orientation.x, data.pose.pose.orientation.y, data.pose.pose.orientation.z, data.pose.pose.orientation.w]
+    
+    (roll, pitch, yaw) = euler_from_quaternion(orientation)
+    
+    pose["angle"] = yaw
+
+    print(yaw)
 
 def time(data):
     pose["time_sec"] = data.clock.secs
