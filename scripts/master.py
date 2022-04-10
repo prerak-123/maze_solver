@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from cmath import pi
 import rospy
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Range
@@ -9,6 +10,13 @@ from tf.transformations import euler_from_quaternion
 
 p_detected = False
 password = 'XXXXX'
+difference_front_right = 0.965609133244 - 0.802687704563 #Front measures 0.96 => After rotation Right measures 0.80
+
+distance_right_wall = 0.6
+
+speed = 0.2
+err = speed*speed / 2
+
 distances = {
     'left': 0,
     'right': 0,
@@ -23,6 +31,20 @@ pose = {
     "time_sec": 0
 }
 
+def next_angle_ACW(current_angle):
+    if(pi/2 < current_angle and current_angle <= pi):
+        return current_angle - 3*pi/2
+    
+    else:
+        return current_angle + pi/2 
+
+def next_angle_CW(current_angle):
+    if(-1*pi <= current_angle and current_angle <= -0.5*pi):
+        return current_angle + 3*pi/2
+    
+    else:
+        return current_angle - pi/2
+    
 def sensor_l(data):
     distances['left'] = data.range
     
@@ -43,7 +65,6 @@ def odom(data):
     
     pose["angle"] = yaw
 
-    print(yaw)
 
 def time(data):
     pose["time_sec"] = data.clock.secs
@@ -63,6 +84,53 @@ def publish_velocity(l_x, l_y, l_z, a_x, a_y, a_z):
     
     rate.sleep()
     return
+
+def turn_left():
+    a_z = 0.1
+    final_angle = next_angle_ACW(pose["angle"])
+    publish_velocity(0,0,0,0,0,a_z)
+    while(not(abs(pose["angle"] - final_angle) <= 0.01)):
+        publish_velocity(0,0,0,0,0,a_z)
+    
+    publish_velocity(0,0,0,0,0,0)
+    return   
+
+def right_arc(radius):
+    v = 0.04
+    w = -1 * v / radius
+    publish_velocity(v,0,0,0,0,w)
+
+    final_angle = next_angle_CW(pose["angle"])
+    while(not(abs(pose["angle"] - final_angle) <= 0.03)):
+        publish_velocity(v,0,0,0,0,w)
+    
+    distance = 0
+    
+    t_0 = rospy.Time.now().to_sec()
+    
+    publish_velocity(v, 0, 0, 0 ,0 ,0)
+    
+    while(distance <= 0.4):
+        t = rospy.Time.now().to_sec()
+        distance = (t-t_0)*v
+        publish_velocity(v, 0, 0, 0 ,0 ,0)
+
+    publish_velocity(0, 0, 0, 0 ,0 ,0)
+    return
+
+def victory_lap():
+    publish_velocity(0,0,0,0,0,1)
+    
+    rospy.sleep(2*pi)
+    
+    print("Solved!")
+    
+    publish_velocity(0,0,0,0,0,0)
+    
+    return
+
+        
+    
 #def Arm_Control:
 
 
@@ -81,14 +149,28 @@ def listner():
 if __name__ == '__main__':
     try:
         rospy.init_node('master', anonymous=True)
+        listner()
+        prev_wall_distance = distances["right"]
         while(not rospy.is_shutdown()):
+            rospy.sleep(1)
             listner()
-            a_z = 0
-            l_x = 0.5
-            if(distances["front"] < 1.1): 
-                l_x = 0
             
-            publish_velocity(l_x, 0, 0, 0, 0, a_z)    
+            if(distances["right"] >= distance_right_wall + 1):
+                if(distances["right"] == 10 and distances["left"] == 10):
+                    victory_lap()
+                    break
+                publish_velocity(0,0,0,0,0,0)
+                right_arc(distance_right_wall - err)
+                continue
+            
+            prev_wall_distance = distances["right"]
+                   
+            if(distances["front"] - err - difference_front_right <= distance_right_wall):
+                publish_velocity(0,0,0,0,0,0)
+                turn_left()
+                continue
 
+            publish_velocity(speed, 0, 0, 0, 0, -0.05*(distances["right"] - distance_right_wall))
+            
     except rospy.ROSInterruptException: pass
 
