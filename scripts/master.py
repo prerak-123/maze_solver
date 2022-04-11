@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from cmath import pi
+from math import copysign, pi
 import rospy
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Range
@@ -94,29 +94,38 @@ def publish_velocity(l_x, l_y, l_z, a_x, a_y, a_z):
     rate.sleep()
     return
 
-def Nearest_Wall():
-    w = 0.1
-    min_so_far = 10
-    n = 0
-    initial_angle = pose["new_angle"]
-    minima = pose["angle"]
-    x = distances["front"]
-    publish_velocity(0,0,0,0,0,w)
-    print(initial_angle)
-    rospy.sleep(0.1)
-    while not(pose["new_angle"] < initial_angle and initial_angle - pose["new_angle"] < 0.1):
-        print("Reached Here")
-        publish_velocity(0,0,0,0,0,w)
-        x = distances["front"]
-        if x < min_so_far:
-            min_so_far = x
-            minima = pose["new_angle"]
-    print(str(minima) + " " + str(min_so_far))
-    publish_velocity(0,0,0,0,0,0)
+
+    
+    # w = 0.1
+    # min_so_far = 10
+    # n = 0
+    # initial_angle = pose["new_angle"]
+    # minima = pose["angle"]
+    # x = distances["front"]
+    # publish_velocity(0,0,0,0,0,w)
+    # print(initial_angle)
+    # rospy.sleep(0.1)
+    # while not(pose["new_angle"] < initial_angle and initial_angle - pose["new_angle"] < 0.1):
+    #     publish_velocity(0,0,0,0,0,w)
+    #     x = distances["front"]
+    #     if x < min_so_far:
+    #         min_so_far = x
+    #         minima = pose["new_angle"]
+    # publish_velocity(0,0,0,0,0,0)
     
 def turn_left():
     a_z = 0.1
     final_angle = next_angle_ACW(pose["angle"])
+    publish_velocity(0,0,0,0,0,a_z)
+    while(not(abs(pose["angle"] - final_angle) <= 0.01)):
+        publish_velocity(0,0,0,0,0,a_z)
+    
+    publish_velocity(0,0,0,0,0,0)
+    return 
+
+def turn_right():
+    a_z = -0.1
+    final_angle = next_angle_CW(pose["angle"])
     publish_velocity(0,0,0,0,0,a_z)
     while(not(abs(pose["angle"] - final_angle) <= 0.01)):
         publish_velocity(0,0,0,0,0,a_z)
@@ -147,6 +156,17 @@ def right_arc(radius):
     publish_velocity(0, 0, 0, 0 ,0 ,0)
     return
 
+def Reach_Wall():
+    w = -1 * copysign(0.04, pose["angle"])
+    while not abs(pose["angle"] + pi/2) < 0.05 :
+        publish_velocity(0, 0, 0, 0, 0, w)
+    v = copysign(0.04, distances["front"] - err - difference_front_right - distance_right_wall)
+    while not abs(distances["front"] - err - difference_front_right - distance_right_wall) < 0.01:
+        publish_velocity(v, 0, 0, 0, 0, 0)
+    publish_velocity(0, 0, 0, 0, 0, 0)
+    turn_left()
+
+
 def victory_lap():
     publish_velocity(0,0,0,0,0,1)
     
@@ -160,7 +180,8 @@ def victory_lap():
 
         
     
-#def Arm_Control:
+def Arm_Control():
+    return
 
 
 def listner():
@@ -179,7 +200,7 @@ if __name__ == '__main__':
         prev_wall_distance = distances["right"]
         rospy.sleep(1)
         listner
-        Nearest_Wall()
+        Reach_Wall()
         while(not rospy.is_shutdown()):
             rospy.sleep(1)
             listner()

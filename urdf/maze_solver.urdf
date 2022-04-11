@@ -462,7 +462,7 @@
   </link>
   <joint
     name="arm_base_joint"
-    type="revolute">
+    type="fixed">
     <origin
       xyz="0.189999999999998 0.0250000000000001 0.265000000000002"
       rpy="1.5707963267949 0.219374105739364 0" />
@@ -520,7 +520,7 @@
   </link>
   <joint
     name="arm_top_joint"
-    type="revolute">
+    type="fixed">
     <origin
       xyz="-0.379999999999998 0.00999999999999857 0"
       rpy="0 0 0.514515495694071" />
