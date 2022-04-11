@@ -17,6 +17,13 @@ distance_right_wall = 0.6
 speed = 0.2
 err = speed*speed / 2
 
+
+def old_range_to_new(angle):
+    if angle >= 0:
+        return angle
+    else:
+        return angle + 2 * pi
+
 distances = {
     'left': 0,
     'right': 0,
@@ -28,6 +35,7 @@ pose = {
     "y": 0,
     "z": 0,
     "angle": 0,
+    "new_angle": 0,
     "time_sec": 0
 }
 
@@ -64,6 +72,7 @@ def odom(data):
     (roll, pitch, yaw) = euler_from_quaternion(orientation)
     
     pose["angle"] = yaw
+    pose["new_angle"] = old_range_to_new(yaw)
 
 
 def time(data):
@@ -85,6 +94,26 @@ def publish_velocity(l_x, l_y, l_z, a_x, a_y, a_z):
     rate.sleep()
     return
 
+def Nearest_Wall():
+    w = 0.1
+    min_so_far = 10
+    n = 0
+    initial_angle = pose["new_angle"]
+    minima = pose["angle"]
+    x = distances["front"]
+    publish_velocity(0,0,0,0,0,w)
+    print(initial_angle)
+    rospy.sleep(0.1)
+    while not(pose["new_angle"] < initial_angle and initial_angle - pose["new_angle"] < 0.1):
+        print("Reached Here")
+        publish_velocity(0,0,0,0,0,w)
+        x = distances["front"]
+        if x < min_so_far:
+            min_so_far = x
+            minima = pose["new_angle"]
+    print(str(minima) + " " + str(min_so_far))
+    publish_velocity(0,0,0,0,0,0)
+    
 def turn_left():
     a_z = 0.1
     final_angle = next_angle_ACW(pose["angle"])
@@ -110,7 +139,7 @@ def right_arc(radius):
     
     publish_velocity(v, 0, 0, 0 ,0 ,0)
     
-    while(distance <= 0.4):
+    while(distance <= 0.45):
         t = rospy.Time.now().to_sec()
         distance = (t-t_0)*v
         publish_velocity(v, 0, 0, 0 ,0 ,0)
@@ -134,9 +163,6 @@ def victory_lap():
 #def Arm_Control:
 
 
-#When spawned, detect the nearest wall and start moving with that wall to the right
-#def Nearest_Wall():
-
 def listner():
     rospy.Subscriber('maze_solver/sensor_l', Range, sensor_l)
     rospy.Subscriber('maze_solver/sensor_f', Range, sensor_f)
@@ -151,6 +177,9 @@ if __name__ == '__main__':
         rospy.init_node('master', anonymous=True)
         listner()
         prev_wall_distance = distances["right"]
+        rospy.sleep(1)
+        listner
+        Nearest_Wall()
         while(not rospy.is_shutdown()):
             rospy.sleep(1)
             listner()

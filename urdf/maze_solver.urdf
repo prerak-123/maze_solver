@@ -718,7 +718,7 @@
 		      </plugin>
 		   	</sensor>  
    		</gazebo>
-       <gazebo reference="camera_link">
+       <gazebo reference="camera">
     <sensor type="camera" name="camera">
       <update_rate>40.0</update_rate>
       <camera name="head">
