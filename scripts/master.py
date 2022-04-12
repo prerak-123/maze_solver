@@ -6,6 +6,7 @@ from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Range
 from nav_msgs.msg import Odometry
 from rosgraph_msgs.msg import Clock
+from std_msgs.msg import Bool
 from tf.transformations import euler_from_quaternion
 
 p_detected = False
@@ -36,8 +37,11 @@ pose = {
     "z": 0,
     "angle": 0,
     "new_angle": 0,
-    "time_sec": 0
+    "time_sec": 0,
+    "yellow_wall": False
 }
+
+
 
 def next_angle_ACW(current_angle):
     if(pi/2 < current_angle and current_angle <= pi):
@@ -93,26 +97,7 @@ def publish_velocity(l_x, l_y, l_z, a_x, a_y, a_z):
     
     rate.sleep()
     return
-
-
-    
-    # w = 0.1
-    # min_so_far = 10
-    # n = 0
-    # initial_angle = pose["new_angle"]
-    # minima = pose["angle"]
-    # x = distances["front"]
-    # publish_velocity(0,0,0,0,0,w)
-    # print(initial_angle)
-    # rospy.sleep(0.1)
-    # while not(pose["new_angle"] < initial_angle and initial_angle - pose["new_angle"] < 0.1):
-    #     publish_velocity(0,0,0,0,0,w)
-    #     x = distances["front"]
-    #     if x < min_so_far:
-    #         min_so_far = x
-    #         minima = pose["new_angle"]
-    # publish_velocity(0,0,0,0,0,0)
-    
+   
 def turn_left():
     a_z = 0.1
     final_angle = next_angle_ACW(pose["angle"])
@@ -169,20 +154,6 @@ def Reach_Wall():
         publish_velocity(v, 0, 0, 0, 0, 0)
     publish_velocity(0, 0, 0, 0, 0, 0)
     turn_left()
-
-
-def victory_lap():
-    publish_velocity(0,0,0,0,0,1)
-    
-    rospy.sleep(2*pi)
-    
-    print("Solved!")
-    
-    publish_velocity(0,0,0,0,0,0)
-    
-    return
-
-        
     
 def Arm_Control():
     return
@@ -194,6 +165,10 @@ def listner():
     rospy.Subscriber('maze_solver/sensor_r', Range, sensor_r)
     rospy.Subscriber('/odom', Odometry, odom)
     rospy.Subscriber('/clock', Clock, time)
+    rospy.Subscriber('/maze_solver/yellow_wall', Bool, wall_type )
+    
+def wall_type(data):
+    pose["yellow_wall"] = data.data
 
     
     
@@ -210,9 +185,6 @@ if __name__ == '__main__':
             listner()
             
             if(distances["right"] >= distance_right_wall + 1):
-                if(distances["right"] == 10 and distances["left"] == 10):
-                    victory_lap()
-                    break
                 publish_velocity(0,0,0,0,0,0)
                 right_arc(distance_right_wall - err)
                 continue
@@ -220,6 +192,9 @@ if __name__ == '__main__':
             prev_wall_distance = distances["right"]
                    
             if(distances["front"] - err - difference_front_right <= distance_right_wall):
+                if(pose["yellow_wall"]):
+                    print("Solved!")
+                    break
                 publish_velocity(0,0,0,0,0,0)
                 turn_left()
                 continue
