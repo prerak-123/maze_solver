@@ -148,7 +148,7 @@ def right_arc(radius):
     
     publish_velocity(v, 0, 0, 0 ,0 ,0)
     
-    while(distance <= 0.45):
+    while(distance <= 0.5):
         t = rospy.Time.now().to_sec()
         distance = (t-t_0)*v
         publish_velocity(v, 0, 0, 0 ,0 ,0)
@@ -158,8 +158,12 @@ def right_arc(radius):
 
 def Reach_Wall():
     w = -1 * copysign(0.04, pose["angle"])
-    while not abs(pose["angle"] + pi/2) < 0.05 :
+    while not abs(pose["angle"]) < 0.05 :
         publish_velocity(0, 0, 0, 0, 0, w)
+    if(distances["left"] < distances["right"]):
+        turn_left()
+    else:
+        turn_right()
     v = copysign(0.04, distances["front"] - err - difference_front_right - distance_right_wall)
     while not abs(distances["front"] - err - difference_front_right - distance_right_wall) < 0.01:
         publish_velocity(v, 0, 0, 0, 0, 0)

@@ -462,7 +462,7 @@
   </link>
   <joint
     name="arm_base_joint"
-    type="fixed">
+    type="revolute">
     <origin
       xyz="0.189999999999998 0.0250000000000001 0.265000000000002"
       rpy="1.5707963267949 0.219374105739364 0" />
@@ -473,8 +473,8 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-0.219374105739371"
-      upper="0.21"
+      lower="-0.40"
+      upper="-0.40"
       effort="0"
       velocity="0" />
   </joint>
@@ -520,7 +520,7 @@
   </link>
   <joint
     name="arm_top_joint"
-    type="fixed">
+    type="revolute">
     <origin
       xyz="-0.379999999999998 0.00999999999999857 0"
       rpy="0 0 0.514515495694071" />
@@ -531,8 +531,8 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-0.514515495694073"
-      upper="2.62707715789572"
+      lower="1.63"
+      upper="1.63"
       effort="0"
       velocity="0" />
   </joint>
@@ -581,13 +581,11 @@
     type="fixed">
     <origin
       xyz="0.352324176953221 0.0100000000000041 0.0288889997713121"
-      rpy="0.590282779909414 1.5707963267949 0" />
+      rpy="0 0 1.57" />
     <parent
       link="arm_top" />
     <child
       link="camera" />
-    <axis
-      xyz="0 0 0" />
   </joint>
   <gazebo>
   <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">

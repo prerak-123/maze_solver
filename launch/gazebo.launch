@@ -2,7 +2,7 @@
       <arg name="debug" default="false" />
       <arg name="gui" default="true" />
       <arg name="pause" default="false" />
-      <arg name="world" default="$(find maze_solver)/worlds/maze0.world" />
+      <arg name="world" default="$(find maze_solver)/worlds/maze3.world" />
 
       <include file="$(find gazebo_ros)/launch/empty_world.launch">
               <arg name="world_name" value="$(arg world)" />
