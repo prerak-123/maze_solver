@@ -22,7 +22,7 @@ def publish(rgb_data):
             else:
                 count_1 += 1
     
-
+    print(count_1)
     if(count_1 > 600):
         image_publisher = rospy.Publisher('maze_solver/yellow_wall', Bool, queue_size=10)
         
@@ -34,7 +34,7 @@ def publish(rgb_data):
         image_publisher = rospy.Publisher('maze_solver/yellow_wall', Bool, queue_size=10)
         
         msg = Bool()
-        msg.data = True
+        msg.data = False
 
         image_publisher.publish(msg)
 
